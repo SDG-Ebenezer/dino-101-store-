@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dino 101 Math Webpage</title>
+  <link rel="icon" type="image/png" href="images/5 FAV.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-container">
+    <nav class="navbar">
+        <div class="logo nav-links"><a href="index.html">Dino 101 Math</a></div>
+        <ul class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li>
+                <a href="https://dino-101-math-store.printify.me/" target="_blank" class="merch-btn">
+                  <span>MERCH</span>
+                  <svg class="external-icon" width="20" height="20" viewBox="-2 3 24 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+
+    <main class="content">
+      <!-- HERO SECTION -->
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Dino 101 Math</h1>
+          <p id="hero-subtitle">Visual. Intuitive. Fun.</p>
+          <a href="about.html" class="cta" id="hero-cta">Learn More</a>
+        </div>
+      </section>
+      <!-- SCROLL ARROW -->
+      <div id="scroll-arrow" class="scroll-arrow">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+      <!-- MEDIA LINKS SECTION -->
+      <div id="home-media-section">
+        <section class="section media">
+          <h2>Follow Dino 101 Math</h2>
+          <div class="media-links">
+            <!-- YOUTUBE -->
+            <a href="https://www.youtube.com/@Dino101YT" target="_blank" class="media-card youtube-card">
+              <div class="media-icon-wrapper youtube-bg">
+                <img src="images/youtube.svg" alt="YouTube Logo" class="media-icon">
+              </div>
+              <div class="media-info">
+                <h3>YouTube</h3>
+                <p>Watch our math tutorials</p>
+              </div>
+            </a>
+
+            <!-- INSTAGRAM -->
+            <a href="https://www.instagram.com/dino.101.yt/" target="_blank" class="media-card instagram-card">
+              <div class="media-icon-wrapper instagram-bg">
+                <img src="images/instagram.svg" alt="Instagram Logo" class="media-icon">
+              </div>
+              <div class="media-info">
+                <h3>Instagram</h3>
+                <p>Daily math tips & tricks</p>
+              </div>
+            </a>
+
+            <!-- TIKTOK -->
+            <a href="https://www.tiktok.com/@dino101math" target="_blank" class="media-card tiktok-card">
+              <div class="media-icon-wrapper tiktok-bg">
+                <img src="images/tiktok.svg" alt="TikTok Logo" class="media-icon">
+              </div>
+              <div class="media-info">
+                <h3>TikTok</h3>
+                <p>Quick math videos</p>
+              </div>
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <!-- MERCH PROMOTION SECTION -->
+      <section class="section merch" id="merch-section">
+        <div class="merch-images">
+          <img src="images/tshirt.png" alt="T-shirt" class="merch-img merch-img-1">
+          <img src="images/mug.png" alt="Mug" class="merch-img merch-img-2">
+        </div>
+        <div class="merch-content">
+          <h2>Grab Your Dino 101 Merch!</h2>
+          <p>Show your love for math with our exclusive Dino 101 Math apparel and accessories. Limited stock available!</p>
+          <a href="https://dino-101-math-store.printify.me/" target="_blank" class="merch-cta">
+            <span>Shop Now</span>
+            <svg class="external-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <script>
+        // Hero Subtitle Animation
+        const subtitle = document.getElementById("hero-subtitle");
+        const words = subtitle.innerText.split(" ");
+        subtitle.innerHTML = "";
+        words.forEach((word, index) => {
+          const span = document.createElement("span");
+          span.innerText = word + " ";
+          span.style.animationDelay = `${index * 0.6}s`;
+          subtitle.appendChild(span);
+        });
+
+        const cta = document.getElementById("hero-cta");
+        const lastWordDelay = (words.length - 1) * 1.0;
+        cta.style.animationDelay = `${lastWordDelay + 1}s`;
+
+        // Scroll Arrow Animation
+        const scrollArrow = document.getElementById("scroll-arrow");
+        scrollArrow.style.animationDelay = `${lastWordDelay + 1.6}s`;
+
+        // Smooth scroll to media section
+        scrollArrow.addEventListener('click', () => {
+          document.getElementById('home-media-section').scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+
+        // Merch Section Scroll Animation
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, {
+          threshold: 0.2
+        });
+
+        const merchSection = document.getElementById('merch-section');
+        observer.observe(merchSection);
+      </script>
+    </main>
+
+    <footer>
+      <p>© 2026 Dino 101 Math</p>
+    </footer>
+  </div>
+</body>
+</html>

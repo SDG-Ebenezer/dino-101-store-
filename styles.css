@@ -1,0 +1,735 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%; /* full height */
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #111;
+  background: #fff;
+  line-height: 1.6;
+}
+
+.page-container {
+  min-height: 100%;         /* make container full height */
+  display: flex;
+  flex-direction: column;   /* stack navbar/content/footer */
+}
+
+.content {
+  flex: 1;                  /* takes all available space */
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+}
+
+.merch-btn {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #111;
+  border-radius: 6px;
+  transition: 0.5s ease;
+}
+
+.merch-btn:hover {
+  background-color: #111;
+  color: #fff;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  background-image: url("images/Background.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* magic */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Transparent overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.35); /* adjust opacity here */
+}
+
+/* Make sure content is above overlay */
+.hero-content {
+  position: relative;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  background: #111;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+}
+
+/* SECTIONS */
+.section {
+  padding: 6rem 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.section.alt {
+  background: #f5f5f5;
+}
+
+#about-section p{
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+/* MEDIA LINKS - OLD STYLES (keeping for backward compatibility) */
+.media-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Base button styling */
+.media-btn {
+  display: inline-flex;          /* flex for icon + text */
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;                  /* spacing between text and icon */
+  text-decoration: none;
+  border: 1px solid #111;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #111;
+  overflow: hidden;             /* hides icon when sliding out */
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Icon animation */
+.media-btn .icon {
+  width: 20px;
+  height: 20px;
+  transform: translateX(-200%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  fill:white;
+}
+
+.media-btn .btn-text {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* On hover: slide icon in */
+.youtube-btn:hover .icon {
+  transform: translateX(-440%);
+  opacity: 1;
+  fill: white
+}
+
+.instagram-btn:hover .icon {
+  transform: translateX(-480%);
+  opacity: 1;
+  fill: white
+}
+
+.tiktok-btn:hover .icon {
+  transform: translateX(-350%);
+  opacity: 1;
+  fill: white
+}
+
+.media-btn:hover .btn-text {
+  transform: translateX(10px); /* text moves 10px right */
+}
+
+.media-urls{
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  padding-bottom: 50px;
+  transition: all 1s ease;
+}
+
+.media-urls:hover{
+  color: dodgerblue;
+}
+
+/* NEW MEDIA SECTION STYLES */
+.section.media {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  max-width: 100%;
+}
+
+.section.media h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #2d3748;
+}
+
+#home-media-section .media-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.media-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 25px;
+  background: white;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.media-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.media-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.youtube-bg {
+  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+}
+
+.instagram-bg {
+  background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.tiktok-bg {
+  background: linear-gradient(135deg, #000000 0%, #69c9d0 100%);
+}
+
+.media-icon {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1);
+}
+
+.media-info h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.4rem;
+  color: #2d3748;
+}
+
+.media-info p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #718096;
+}
+
+/* MERCH SECTION STYLES */
+.section.merch {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+#merch-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.merch-images {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  flex-shrink: 0;
+}
+
+.merch-img {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.merch-img-1 {
+  transform: rotate(-8deg) translateX(-100px);
+  top: 20px;
+  left: 0;
+  z-index: 1;
+}
+
+.merch-img-2 {
+  transform: rotate(8deg) translateX(100px);
+  top: 60px;
+  right: 0;
+  z-index: 2;
+}
+
+#merch-section.visible .merch-img-1 {
+  opacity: 1;
+  transform: rotate(-8deg) translateX(0);
+}
+
+#merch-section.visible .merch-img-2 {
+  opacity: 1;
+  transform: rotate(8deg) translateX(0);
+}
+
+.merch-content {
+  flex: 1;
+  min-width: 300px;
+  color: white;
+}
+
+.merch-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.merch-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0.95;
+}
+
+.merch-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: white;
+  color: #667eea;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.merch-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  background: #f7fafc;
+}
+
+.external-icon {
+  transition: transform 0.3s ease;
+}
+
+.merch-cta:hover .external-icon {
+  transform: translate(3px, -3px);
+}
+
+/* CONTACT */
+.email-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #111;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  background: #fafafa;
+  width: 100%;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  #home-media-section .media-links {
+    grid-template-columns: 1fr;
+  }
+
+  .merch-images {
+    width: 300px;
+    height: 300px;
+  }
+
+  .merch-img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .merch-content h2 {
+    font-size: 2rem;
+  }
+
+  .merch-content p {
+    font-size: 1rem;
+  }
+}
+
+.contact-form {
+  max-width: 520px;
+  margin-top: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.6rem 0.7rem;
+  border: 1px solid #111;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+#contact-form-submit {
+  margin-top: 0.5rem;
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 2s ease;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+#contact-form-submit:hover {
+  background: #666666;
+  color: #dfdfdf;
+}
+
+.contact-section{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+}
+.contact-text-inputs{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+/* HERO SUBTITLE ANIMATION */
+#hero-subtitle span {
+  font-size:3rem;
+  display: inline-block;
+  transform: translateY(100%); /* start below baseline */
+  opacity: 0;
+  animation: riseUp 0.6s forwards ease-out; /* stays at final state */
+  white-space: pre; /* preserves spaces after each word */
+}
+
+@keyframes riseUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-5%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+/* HERO CTA ANIMATION */
+#hero-cta {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px); /* start slightly below */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  animation: ctaRise 0.6s forwards ease-out;
+  animation-delay: 1.2s; /* delay to start after the words animate */
+}
+
+@keyframes ctaRise {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-5px); /* slight bounce */
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+}
+
+#home-media-section{
+  background-color: #eeeeee;
+  width: 100%;
+}
+
+.merch-btn .cta{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 5px 5px 5px 0;
+  padding: 10px;
+}
+
+/* SCROLL ARROW */
+.scroll-arrow {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  opacity: 0;
+  animation: arrowFadeIn 0.6s forwards ease-out, bounce 2s infinite ease-in-out;
+  z-index: 100;
+}
+
+.scroll-arrow svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.scroll-arrow:hover svg {
+  transform: translateY(5px);
+}
+
+@keyframes arrowFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+/* CONTACT PAGE STYLES */
+.contact-page-section {
+  padding-top: 120px;
+  max-width: 700px;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contact-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.contact-header p {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* MEDIA PAGE STYLES */
+#media-page-section {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+#media-page-section .section.media {
+  max-width: 100%;
+}
+
+.media-page-intro {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #4a5568;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.media-url {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #a0aec0;
+  font-weight: 600;
+}
+
+/* ABOUT PAGE STYLES */
+#about-page-section {
+  padding-top: 120px;
+  max-width: 800px;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.about-header h2 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+.about-content p {
+  font-size: 1.15rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.about-content h3 {
+  font-size: 1.8rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.about-content strong {
+  color: #111;
+  font-weight: 600;
+}
+
+.about-content em {
+  font-style: italic;
+  color: #555;
+}
+
+.about-cta-section {
+  display: flex;
+  gap: 15px;
+  margin-top: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-secondary {
+  background: white;
+  color: #111;
+  border: 2px solid #111;
+}
+
+.cta-secondary:hover {
+  background: #f5f5f5;
+}
+
+@media (max-width: 768px) {
+  .contact-header h2,
+  .about-header h2 {
+    font-size: 2rem;
+  }
+  
+  .about-content h3 {
+    font-size: 1.5rem;
+  }
+  
+  .about-cta-section {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .about-cta-section .cta {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+}
