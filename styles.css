@@ -72,8 +72,9 @@ html, body {
   height: 100vh;
   min-height: 600px; /* Ensures minimum height on small screens */
   background-image: url("images/Background.png");
-  background-size: cover;
-  background-position: center;
+  background-size: cover; /* This ensures the image covers the entire area */
+  background-position: center center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
   background-attachment: fixed; /* parallax effect on desktop */
   display: flex;
   align-items: center;
@@ -441,6 +442,8 @@ footer {
 
   .hero {
     background-attachment: scroll; /* Disable parallax on mobile for better performance */
+    background-size: 150%; /* Zoom in more on mobile */
+    background-position: 30% center; /* Shift to show content */
     min-height: 500px;
   }
 
@@ -484,6 +487,7 @@ footer {
 @media (max-width: 480px) {
   .hero {
     min-height: 450px;
+    background-position: center center; /* Ensure centering on very small screens */
   }
 
   .hero h1 {
@@ -496,6 +500,21 @@ footer {
 
   .hero-content {
     padding: 1rem;
+  }
+}
+
+/* Extra narrow screens (portrait phones) */
+@media (max-width: 375px) {
+  .hero {
+    min-height: 400px;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  #hero-subtitle span {
+    font-size: 1.3rem !important;
   }
 }
 
